@@ -7,6 +7,16 @@ body {
     margin: 0;
 }
 
+
+#calc{
+    font-weight: bold; /* Use font-weight to make the text bolder */
+    font-size: medium;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+
 .calculator {
     border: 2px solid #bfb613;
     border-radius: 8px;
