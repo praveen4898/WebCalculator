@@ -8,20 +8,21 @@ body {
 }
 
 .calculator {
-    border: 2px solid #ccc;
+    border: 2px solid #bfb613;
     border-radius: 8px;
     padding: 20px;
 }
 
 .display {
-    background-color: #b09898;
-    border: 1px solid #ccc;
+    background-color: #302d2d;
+    border: 1px solid #bfb613;
     border-radius: 4px;
     margin-bottom: 10px;
     padding: 10px;
     text-align: right;
     font-size: 24px;
     min-height: 50px;
+    color: #bfb613;
 }
 
 .keys {
@@ -31,16 +32,17 @@ body {
 }
 
 button {
+    color: #bfb613;
     padding: 10px;
     font-size: 20px;
     border-radius: 4px;
     cursor: pointer;
     border: none;
     outline: none;
-    background-color: #e0e0e0;
+    background-color: #302d2d;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #ccc;
+    background-color: #070707;
 }
