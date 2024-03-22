@@ -10,7 +10,7 @@ body {
 
 
 #calc{
-    font-weight: bold; /* Use font-weight to make the text bolder */
+    font-weight: bold; 
     font-size: medium;
     text-align: center;
     margin-bottom: 10px;
