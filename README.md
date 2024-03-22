@@ -1,5 +1,5 @@
 # Basic Calculator
-
+Try calculator, visit https://web-calculator-pi.vercel.app/
 This is a simple web-based calculator application built using HTML, CSS, and JavaScript. The calculator allows users to perform basic arithmetic operations such as addition, subtraction, multiplication, division, and percentage calculations. It provides a user-friendly interface for both mouse and keyboard inputs.
 
 ## How to Use
