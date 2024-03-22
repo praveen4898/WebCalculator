@@ -24,4 +24,23 @@ body {
     min-height: 50px;
 }
 
+.keys {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
 
+button {
+    padding: 10px;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ccc;
+}
