@@ -21,19 +21,52 @@ function updateDisplay() {
 
 document.addEventListener('keydown', handleKeyPress);
 
-
 function handleKeyPress(event) {
     const key = event.key;
-    if (/[0-9\+\-\*\/\.\%]/.test(key)) {
+    if (/[0-9\+\-\*\/\.\%\=]/.test(key)) {
         appendValue(key);
-    } else if (key === 'Enter' || key === '=') {
-        calculate();
     } else if (key === 'Backspace') {
         deleteLast();
     } else if (key === 'Escape') {
         clearDisplay();
     }
 }
+
+function isOperator(char) {
+    return ['+', '-', '*', '/'].includes(char) || char === '/';
+}
+
+function precedence(operator) {
+    switch (operator) {
+        case '+':
+        case '-':
+            return 1;
+        case '*':
+        case '/':
+            return 2;
+        default:
+            return 0;
+    }
+}
+
+function applyOperator(operator, operand1, operand2) {
+    switch (operator) {
+        case '+':
+            return operand1 + operand2;
+        case '-':
+            return operand1 - operand2;
+        case '*':
+            return operand1 * operand2;
+        case '/':
+            if (operand2 === 0) {
+                throw new Error('Division by zero');
+            }
+            return operand1 / operand2;
+        default:
+            throw new Error('Invalid operator');
+    }
+}
+
 function calculatePercentage() {
     try {
         const parts = expression.split('%');
@@ -54,22 +87,60 @@ function calculatePercentage() {
     }
 }
 
-
 function calculate() {
-    try {
-        const result = eval(expression);
-        if (isNaN(result) || !isFinite(result)) {
-            throw new Error('Invalid expression');
-        }
-        expression = result.toString();
-        updateDisplay();
-    } catch (error) {
-        if (error instanceof SyntaxError) {
-            expression = '';
+    if (expression.includes('%')) {
+        calculatePercentage();
+    } else {
+        try {
+            let numStack = [];
+            let opStack = [];
+            let num = '';
+
+            for (let i = 0; i < expression.length; i++) {
+                const char = expression[i];
+                if (!isNaN(char) || char === '.') {
+                    num += char;
+                } else if (isOperator(char)) {
+                    if (num !== '') {
+                        numStack.push(parseFloat(num));
+                        num = '';
+                    }
+                    while (
+                        opStack.length > 0 &&
+                        precedence(opStack[opStack.length - 1]) >= precedence(char)
+                    ) {
+                        const operator = opStack.pop();
+                        const operand2 = numStack.pop();
+                        const operand1 = numStack.pop();
+                        numStack.push(applyOperator(operator, operand1, operand2));
+                    }
+                    opStack.push(char);
+                }
+            }
+
+            if (num !== '') {
+                numStack.push(parseFloat(num));
+            }
+
+            while (opStack.length > 0) {
+                const operator = opStack.pop();
+                const operand2 = numStack.pop();
+                const operand1 = numStack.pop();
+                numStack.push(applyOperator(operator, operand1, operand2));
+            }
+
+            if (numStack.length !== 1 || opStack.length !== 0) {
+                throw new Error('Invalid expression');
+            }
+
+            expression = numStack.pop().toString();
             updateDisplay();
-        } else {
+        } catch (error) {
             expression = 'Error';
             updateDisplay();
         }
     }
 }
+
+// Utility functions: isOperator, precedence, applyOperator
+// These functions remain the same as previously defined
