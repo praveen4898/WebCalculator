@@ -5,6 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-color: rgb(142, 144, 145);
 }
 
 
@@ -18,14 +19,15 @@ body {
 
 
 .calculator {
-    border: 2px solid #bfb613;
+    border: 5px solid #bfb613;
     border-radius: 8px;
     padding: 20px;
+    background-color: #727272;
 }
 
 .display {
     background-color: #302d2d;
-    border: 1px solid #bfb613;
+    border: 2px solid #e3d916;
     border-radius: 4px;
     margin-bottom: 10px;
     padding: 10px;
@@ -39,10 +41,14 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
+
+    
 }
 
 button {
     color: #bfb613;
+    border: 1px solid #e3d916;
+
     padding: 10px;
     font-size: 20px;
     border-radius: 4px;
