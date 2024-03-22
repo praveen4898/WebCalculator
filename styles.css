@@ -14,7 +14,7 @@ body {
 }
 
 .display {
-    background-color: #f7f7f7;
+    background-color: #b09898;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 10px;
@@ -26,7 +26,7 @@ body {
 
 .keys {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
 }
 
