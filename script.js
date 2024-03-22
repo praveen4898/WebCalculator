@@ -141,6 +141,3 @@ function calculate() {
         }
     }
 }
-
-// Utility functions: isOperator, precedence, applyOperator
-// These functions remain the same as previously defined
